@@ -1,0 +1,9 @@
+#This is a text file for relations.
+#Lines started with # are comments and should be ignored.
+#The structure of the file:
+#Name	Surname	Name	Surname	Relation
+Aragorn Estel|Arwen Undomiel|Couple
+Frodo Beggins|Gendalf Mithrandir|Friends
+Aragorn Estel|Frodo Beggins|Friends
+Aragorn Estel|Gendalf Mithrandir|Friends
+Frodo Beggins|Galadriel Nerwen|Colleges	
