@@ -10,19 +10,22 @@ import java.sql.SQLException;
  *This class implements deleting of the user
  */
 public class DeleteQuery {
-public static void userDelete(String name, String surname) {
+public static void userDelete(String name) {
 		
-		String url = "jdbc:sqlite:MiniNetDB";
+		String url = "jdbc:sqlite:MiniDB.db";
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection(url);
-			String sql = "Delete * from Users"
-					+ "where name = ? and surname = ?;";
+			String sql = "Delete from Profiles where name = ?;";
 			PreparedStatement pstmn = con.prepareStatement(sql);
 			pstmn.setString(1, name);
-			pstmn.setString(2, surname);
-			ResultSet rs = pstmn.executeQuery();
-		
+			String sql2 = "Delete from relations where profile1 = ? or profile2 = ?";
+			PreparedStatement pstmn2 = con.prepareStatement(sql2);
+			pstmn2.setString(1, name);
+			pstmn2.setString(2, name);
+			pstmn.execute();
+			pstmn2.execute();
+			con.setAutoCommit(true);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage()); 
 		} finally {
@@ -36,9 +39,8 @@ public static void userDelete(String name, String surname) {
 		}
 	}
 public static void main(String[] args) {
-	String name = "John";
-	String surname = "Smeet";
-	userDelete(name, surname);
+	String name = "Aleksei Savran";
+	userDelete(name);
 }
 
 }

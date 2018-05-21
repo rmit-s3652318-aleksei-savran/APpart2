@@ -5,23 +5,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import gui.Adult;
 
 /**
  * @author Savran Aleksei
  *This class implements method to show all users
  */
 public class ShowAllUsers {
-public static void userShowAll() throws ClassNotFoundException {
+public static ArrayList<Adult> userShowAll() throws ClassNotFoundException {
 		Class.forName("org.sqlite.JDBC");
 		String url = "jdbc:sqlite:MiniDB.db";
 		Connection con = null;
+		ArrayList<Adult> adultsSQL = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(url);
 			String sql = "Select * from Profiles;";
 			Statement stm = con.createStatement();
 			ResultSet rs = stm.executeQuery(sql);
 			while (rs.next()) {
-				System.out.println(rs.getString(2)+ "\t" + rs.getString(3) + "\t" + rs.getString(5) + "\t" + rs.getString(6) + "\t" + rs.getString(8) + "\t" + rs.getInt(7));
+				if (rs.getInt(6) > 16) {
+					adultsSQL.add(new Adult(rs.getString(2), rs.getString(2) + ".jpg", rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7))) ;
+				}
 			}
 		
 		} catch (SQLException e) {
@@ -35,6 +41,7 @@ public static void userShowAll() throws ClassNotFoundException {
 				}
 			}
 		}
+		return adultsSQL;
 	}
 public static void main(String[] args) throws ClassNotFoundException {
 	userShowAll();

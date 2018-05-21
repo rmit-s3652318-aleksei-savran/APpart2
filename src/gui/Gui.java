@@ -23,6 +23,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import sql.*;
+import exceptions.*;
 
 public class Gui extends Application {
 	private Driver _driver;
@@ -60,7 +62,8 @@ public class Gui extends Application {
 		root.add(searchText, 9, 1, 4, 2);
 		root.add(btnSearch, 13, 1, 2, 2);
 
-		_names.addAll(_driver.listProfiles());
+		//_names.addAll(_driver.listProfiles());
+		_names.addAll(ShowAllUsers.userShowAll());
 		ListView<Profile> lstNames = new ListView<>(_names);
 		lstNames.setOrientation(Orientation.VERTICAL);
 		lstNames.setPrefSize(300, 200);
@@ -120,6 +123,10 @@ public class Gui extends Application {
 				TextField ageText = new TextField();
 				Label statusLabel = new Label("Status");
 				TextField statusText = new TextField();
+				Label sexLabel = new Label("Sex");
+				TextField sexText = new TextField();
+				Label stateLabel = new Label("State");
+				TextField stateText = new TextField();
 
 				addPopupGrid.add(nameLabel, 1, 1, 2, 2);
 				addPopupGrid.add(nameText, 3, 1, 2, 2);
@@ -127,18 +134,23 @@ public class Gui extends Application {
 				addPopupGrid.add(ageText, 3, 3, 2, 2);
 				addPopupGrid.add(statusLabel, 1, 5, 2, 2);
 				addPopupGrid.add(statusText, 3, 5, 2, 2);
+				addPopupGrid.add(sexLabel, 1, 7, 2, 2);
+				addPopupGrid.add(sexText, 3, 7, 2, 2);
+				addPopupGrid.add(stateLabel, 1, 9, 2, 2);
+				addPopupGrid.add(stateText, 3, 9, 2, 2);
+				
 
 				Label momNameLabel = new Label("Mother's name");
 				TextField momNameText = new TextField();
 
-				addPopupGrid.add(momNameLabel, 1, 7, 2, 2);
-				addPopupGrid.add(momNameText, 3, 7, 2, 2);
+				addPopupGrid.add(momNameLabel, 1, 11, 2, 2);
+				addPopupGrid.add(momNameText, 3, 11, 2, 2);
 
 				Label dadNameLabel = new Label("Father's name");
 				TextField dadNameText = new TextField();
 
-				addPopupGrid.add(dadNameLabel, 1, 9, 2, 2);
-				addPopupGrid.add(dadNameText, 3, 9, 2, 2);
+				addPopupGrid.add(dadNameLabel, 1, 13, 2, 2);
+				addPopupGrid.add(dadNameText, 3, 13, 2, 2);
 
 				Button btnCreate = new Button("Create");
 				Button btnCancel = new Button("Cancel");
@@ -159,7 +171,9 @@ public class Gui extends Application {
 						Boolean success = false;
 						try {
 							int age = Integer.parseInt(ageText.getText());
-							success = _driver.createProfile(nameText.getText(), statusText.getText(), age);
+							//success = _driver.createProfile(nameText.getText(), statusText.getText(), age);
+							CreateQueries.createNewUser(nameText.getText(), statusText.getText(), sexText.getText(), age, stateText.getText());
+							success = true;
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -185,10 +199,18 @@ public class Gui extends Application {
 		search.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Profile profile = _driver.searchProfile(searchText.getText());
-				if (profile != null) {
-					_names.add(profile);
+				//Profile profile = _driver.searchProfile(searchText.getText());
+				Profile profile;
+				try {
+					profile = SearchQueries.userSearch(searchText.getText());
+					if (profile != null) {
+						_names.add(profile);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+				
 			}
 		});
 	}
@@ -312,9 +334,11 @@ public class Gui extends Application {
 			public void handle(ActionEvent event) {
 				try {
 					if (_selectedProfile != null) {
-						_driver.DeleteProfile(_selectedProfile.getname());
+						//_driver.DeleteProfile(_selectedProfile.getname());
 						_names.remove(_selectedProfile);
+						DeleteQuery.userDelete(_selectedProfile.getname());
 						_selectedProfile = null;
+						
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

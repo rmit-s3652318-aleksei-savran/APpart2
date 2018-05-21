@@ -33,8 +33,8 @@ public class Driver {
 		try {
 			this._reader = _reader;
 			_adults = _reader.loadAdults();
-			_children = _reader.loadChildren();
-			_kids = _reader.loadKids();
+			//_children = _reader.loadChildren();
+			//_kids = _reader.loadKids();
 
 			_allProfiles = _reader.loadAllProfiles();
 		} catch (Exception e) {
@@ -324,8 +324,8 @@ public class Driver {
 		DataReader dr = new DataReader();
 		Driver driver = new Driver(dr);
 		dr.loadAdults();
-		dr.loadChildren();
-		dr.loadKids();
+		//dr.loadChildren();
+		//dr.loadKids();
 		dr.SetColleagues();
 		System.out.println(dr.searchAdultProfile("Gomer Simpson").getSpouse());
 	}

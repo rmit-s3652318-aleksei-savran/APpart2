@@ -60,95 +60,95 @@ public class DataReader {
 
 	}
 
-	public ArrayList<Profile> loadChildren() throws Exception {
+//	public ArrayList<Profile> loadChildren() throws Exception {
+//
+//		try {
+//			setBreader(new BufferedReader(new FileReader("data/people.txt")));
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//			System.out.println(e.getMessage());
+//			return null;
+//		}
+//
+//		ArrayList<Profile> children = new ArrayList<Profile>();
+//
+//		try {
+//			String line = breader.readLine();
+//			while (line != null) {
+//
+//				if (line.startsWith("#")) { // Skipping the comment lines
+//					line = breader.readLine();
+//					continue;
+//				}
+//
+//				String[] tokens = line.split("\\|");
+//				String name = tokens[0];
+//				String imagePath = tokens[1];
+//				String status = tokens[2];
+//				String sex = tokens[3];
+//				String ageT = tokens[4];
+//				int age = Integer.parseInt(ageT);
+//				String state = tokens[5];
+//
+//				if (age > 2 && age < 17) {
+//					children.add(new Child(name, imagePath, status, sex, age, state, null, null));
+//				}
+//
+//				line = breader.readLine();
+//
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return children;
+//
+//	}
 
-		try {
-			setBreader(new BufferedReader(new FileReader("data/people.txt")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-			return null;
-		}
+//	public ArrayList<Profile> loadKids() throws Exception {
+//
+//		try {
+//			setBreader(new BufferedReader(new FileReader("data/people.txt")));
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
+//
+//		ArrayList<Profile> kids = new ArrayList<Profile>();
+//
+//		try {
+//			String line = breader.readLine();
+//			while (line != null) {
+//
+//				if (line.startsWith("#")) { // Skipping the comment lines
+//					line = breader.readLine();
+//					continue;
+//				}
+//
+//				String[] tokens = line.split("\\|");
+//				String name = tokens[0];
+//				String imagePath = tokens[1];
+//				String status = tokens[2];
+//				String sex = tokens[3];
+//				String ageT = tokens[4];
+//				int age = Integer.parseInt(ageT);
+//				String state = tokens[5];
+//
+//				if (age < 3) {
+//					kids.add(new YoungChild(name, imagePath, status, sex, age, state, null, null));
+//				}
+//
+//				line = breader.readLine();
+//
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			System.out.println(e.getMessage());
+//		}
+//
+//		return kids;
 
-		ArrayList<Profile> children = new ArrayList<Profile>();
-
-		try {
-			String line = breader.readLine();
-			while (line != null) {
-
-				if (line.startsWith("#")) { // Skipping the comment lines
-					line = breader.readLine();
-					continue;
-				}
-
-				String[] tokens = line.split("\\|");
-				String name = tokens[0];
-				String imagePath = tokens[1];
-				String status = tokens[2];
-				String sex = tokens[3];
-				String ageT = tokens[4];
-				int age = Integer.parseInt(ageT);
-				String state = tokens[5];
-
-				if (age > 2 && age < 17) {
-					children.add(new Child(name, imagePath, status, sex, age, state, null, null));
-				}
-
-				line = breader.readLine();
-
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return children;
-
-	}
-
-	public ArrayList<Profile> loadKids() throws Exception {
-
-		try {
-			setBreader(new BufferedReader(new FileReader("data/people.txt")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
-
-		ArrayList<Profile> kids = new ArrayList<Profile>();
-
-		try {
-			String line = breader.readLine();
-			while (line != null) {
-
-				if (line.startsWith("#")) { // Skipping the comment lines
-					line = breader.readLine();
-					continue;
-				}
-
-				String[] tokens = line.split("\\|");
-				String name = tokens[0];
-				String imagePath = tokens[1];
-				String status = tokens[2];
-				String sex = tokens[3];
-				String ageT = tokens[4];
-				int age = Integer.parseInt(ageT);
-				String state = tokens[5];
-
-				if (age < 3) {
-					kids.add(new YoungChild(name, imagePath, status, sex, age, state, null, null));
-				}
-
-				line = breader.readLine();
-
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
-
-		return kids;
-
-	}
+//	}
 
 	public ArrayList<Profile> loadAllProfiles() throws Exception {
 
@@ -182,9 +182,9 @@ public class DataReader {
 				if (age > 16) {
 					allProfiles.add(new Adult(name, imagePath, status, sex, age, state));
 				} else if (age > 3) {
-					allProfiles.add(new Child(name, imagePath, status, sex, age, state, null, null));
+					//allProfiles.add(new Child(name, imagePath, status, sex, age, state, null, null));
 				} else {
-					allProfiles.add(new YoungChild(name, imagePath, status, sex, age, state, null, null));
+					//allProfiles.add(new YoungChild(name, imagePath, status, sex, age, state, null, null));
 				}
 				line = breader.readLine();
 
@@ -203,12 +203,12 @@ public class DataReader {
 		for (Profile a : loadAdults()) {
 			profiles.add(a);
 		}
-		for (Profile c : loadChildren()) {
-			profiles.add(c);
-		}
-		for (Profile k : loadKids()) {
-			profiles.add(k);
-		}
+		//for (Profile c : loadChildren()) {
+		//	profiles.add(c);
+		//}
+		//for (Profile k : loadKids()) {
+		//	profiles.add(k);
+		//}
 		return profiles;
 	}
 
@@ -348,45 +348,45 @@ public class DataReader {
 		
 	}
 	
-	public void SetChildren() throws Exception {
-
-		try {
-			setBreader(new BufferedReader(new FileReader("data/relations.txt")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			
-		}
-
-		try {
-			String line = breader.readLine();
-			while (line != null) {
-
-				if (line.startsWith("#")) { // Skipping the comment lines
-					line = breader.readLine();
-					continue;
-				}
-
-				String[] tokens = line.split("\\|");
-				String name = tokens[0];
-				String name2 = tokens[1];
-				String relation = tokens[2];
-				
-				if (relation == "Dad") {
-					searchChildProfile(name2).set_parent2(searchAdultProfile(name));
-				} if (relation == "Mom") {
-					searchChildProfile(name2).set_parent1(searchAdultProfile(name));
-				}
-
-				line = breader.readLine();
-
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
-		
-	}
+//	public void SetChildren() throws Exception {
+//
+//		try {
+//			setBreader(new BufferedReader(new FileReader("data/relations.txt")));
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//			
+//		}
+//
+//		try {
+//			String line = breader.readLine();
+//			while (line != null) {
+//
+//				if (line.startsWith("#")) { // Skipping the comment lines
+//					line = breader.readLine();
+//					continue;
+//				}
+//
+//				String[] tokens = line.split("\\|");
+//				String name = tokens[0];
+//				String name2 = tokens[1];
+//				String relation = tokens[2];
+//				
+//				if (relation == "Dad") {
+//					searchChildProfile(name2).set_parent2(searchAdultProfile(name));
+//				} if (relation == "Mom") {
+//					searchChildProfile(name2).set_parent1(searchAdultProfile(name));
+//				}
+//
+//				line = breader.readLine();
+//
+//			}
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			System.out.println(e.getMessage());
+//		}
+//		
+//	}
 	
 	public void SetClassmates() throws Exception {//array of classmates needs to be added
 

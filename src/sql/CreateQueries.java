@@ -124,7 +124,10 @@ public class CreateQueries {
 		return baos !=null ? baos.toByteArray() : null;
 	}
 	
-	
+	public static void main(String[] args) throws ClassNotFoundException {
+		createNewUser("Savran Aleksei", "Student", "M", 23, "CBD");
+		
+	}
 	
 	
 
