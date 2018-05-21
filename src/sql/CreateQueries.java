@@ -18,21 +18,20 @@ import java.sql.Statement;
 public class CreateQueries {
 	private static FileInputStream fis;
 
-	public static void createNewUser(String name, String surname, String filename, String status, String sex, int age, String state) throws ClassNotFoundException {
+	public static void createNewUser(String name, String status, String sex, int age, String state) throws ClassNotFoundException {
 		Class.forName("org.sqlite.JDBC");
 		String url = "jdbc:sqlite:MiniDB.db";
 		Connection con = null;
 		try {
 			con = DriverManager.getConnection(url);
-			String sql = "insert into Profiles (name, surname, image, status, sex, age, state) values (?,?,?,?,?,?,?);";
+			String sql = "insert into Profiles (name, image, status, sex, age, state) values (?,?,?,?,?,?);";
 			PreparedStatement pstmn = con.prepareStatement(sql);
 			pstmn.setString(1, name);
-			pstmn.setString(2, surname);
-			pstmn.setBytes(3, readFile(filename));
-			pstmn.setString(4, status);
-			pstmn.setString(5, sex);
-			pstmn.setInt(6, age);
-			pstmn.setString(7, state);
+			pstmn.setBytes(2, readFile("data/noimagefound.jpg"));
+			pstmn.setString(3, status);
+			pstmn.setString(4, sex);
+			pstmn.setInt(5, age);
+			pstmn.setString(6, state);
 			
 			pstmn.execute();
 			con.commit();
@@ -49,6 +48,61 @@ public class CreateQueries {
 			}
 		}
 	}
+	
+	public static void addFriend(String name, String name2, String relation) throws ClassNotFoundException {
+		Class.forName("org.sqlite.JDBC");
+		String url = "jdbc:sqlite:MiniDB.db";
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(url);
+			String sql = "insert into relations (profile1, profile2, relation) values (?,?,?);";
+			PreparedStatement pstmn = con.prepareStatement(sql);
+			pstmn.setString(1, name);
+			pstmn.setString(2, name2);
+			pstmn.setString(3, relation);
+			pstmn.execute();
+			con.commit();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage()); 
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e2) {			
+					System.out.println(e2.getMessage()); 
+				}
+			}
+		}
+	}
+	
+//	public static void addColleagues(String name, String name2) throws ClassNotFoundException {
+//		Class.forName("org.sqlite.JDBC");
+//		String url = "jdbc:sqlite:MiniDB.db";
+//		Connection con = null;
+//		try {
+//			con = DriverManager.getConnection(url);
+//			String sql = "update relations set id = ?, colleagues = ?;";
+//			PreparedStatement pstmn = con.prepareStatement(sql);
+//			int prID = SearchQueries.getUserID(name);
+//			
+//			pstmn.setInt(1, prID);
+//			pstmn.setString(2, name2);			
+//			pstmn.execute();
+//			con.commit();
+//			
+//		} catch (SQLException e) {
+//			System.out.println(e.getMessage()); 
+//		} finally {
+//			if (con != null) {
+//				try {
+//					con.close();
+//				} catch (SQLException e2) {			
+//					System.out.println(e2.getMessage()); 
+//				}
+//			}
+//		}
+//	}
 	
 	private static byte[] readFile(String file) {
 		ByteArrayOutputStream baos = null;
@@ -72,9 +126,6 @@ public class CreateQueries {
 	
 	
 	
-	public static void main(String[] args) throws ClassNotFoundException {
-		
-		createNewUser("Han", "Solo", "data/noimagefound.jpg", "Galactic Piligrim", "M", 41, "Earth");
-	}
+	
 
 }

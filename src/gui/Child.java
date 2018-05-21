@@ -90,6 +90,14 @@ public class Child extends Profile {
 		}
 	}
 
+	public void set_parent1(Adult _parent1) {
+		this._parent1 = _parent1;
+	}
+
+	public void set_parent2(Adult _parent2) {
+		this._parent2 = _parent2;
+	}
+
 	public Set<Child> getclassmate() {
 		return _classmate;
 

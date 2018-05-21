@@ -7,6 +7,11 @@ import java.util.Set;
 public class Adult extends Profile {
 
 	Adult Spouse;
+	public void setSpouse(Adult spouse) {
+		Spouse = spouse;
+	}
+
+
 	Set<Adult> _colleague = new HashSet<>();
 
 //	public Adult(String name, String status, int age) {

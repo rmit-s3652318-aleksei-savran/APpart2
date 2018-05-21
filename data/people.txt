@@ -2,12 +2,21 @@
 #Lines started with # are comments and should be ignored.
 #All of the images are used for educational purpose.
 #The structure of the file:
-#Name,Surname,Photo(file name, if exists),Status,Sex,Age,State 	
+#Name Surname,Photo(file name, if exists),Status,Sex,Age,State 	
 Frodo Beggins|Frodo.jpg|Ring bearer|M|33|Shire
 Legolas Greenleaf|Legolas.jpg|Seeker|M|2931|Mirkwood
 Aragorn Estel|Aragorn.jpg|King of the reunited kingdom|M|87|Gondor
 Gandalf Mithrandir|Gandalf.jpg|Servant of the Secret Fire|M|11000|Erebor
 Galadriel Nerwen|Galadriel.jpg|Lady of the wood|F|7000|Valinor
 Arwen Undomiel|Arwen.jpg|Lady of Rivendell|F|2700|Gondor
-ASDsa sadsad|asd.jpg|sadasd|F|1|dasd
-ASDssada sadsadasd|aasdsd.jpg|saasddasd|M|12|dasds
+Maggy Simpson|Maggy.jpg|T_T|F|1|Springfield
+Bart Simpson|Bart.jpg|Studying at Springfield primary school|M|12|Springfield
+Lisa Simpson|Lisa.jpg|Studying at Springfield primary school|F|10|Springfield
+Marge Simpson|Marge.jpg|Housewife|F|36|Springfield
+Gomer Simpson|Gomer.jpg|Nuclear security engineer|M|39|Springfield
+Charlse Bearns|Charles.jpg|Billionaire|M|80|Springfield
+Milhouse Van Damme Houton|Milhouse.jpg|Studying at Springfield primary school|M|12|Springfield
+Luann Van Houten|Luann.jpg|Housewife|F|36|Springfield
+Kirk Van Houten|Kirk.jpg|Unemployed|M|40|Springfield
+Han Solo|Han.jpg|Galactic Piligrim|M|41|Earth
+Gollum Smeagol|Gollum.jpg|Looking for my precious|M|500|Shire

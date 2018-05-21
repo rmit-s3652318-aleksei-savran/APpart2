@@ -100,7 +100,7 @@ public class Driver {
 			} else {
 				profile = new YoungChild(name, "data/" + name + ".jpg", status, status, age, status, mum, dad);
 			}
-			CreateQueries.createNewUser(name, "data/Frodo.jpg", status, "m", age, "Student"); // create queries needs to be modified as well as table structure
+			CreateQueries.createNewUser(name, status, "m", age, "Student"); 
 			_profiles.add(profile);
 			return true;
 		}
@@ -298,11 +298,13 @@ public class Driver {
 				String[] tokens = line.split("\\|");
 				String name = tokens[0];
 				String name2 = tokens[1];
-				String relation = tokens[4];
-
-				for (Profile p : _reader.getAllProfiles()) {
-					if (p.getname().equals(name)) {
-						p._friendlist.add(_reader.searchProfile(name2));
+				String relation = tokens[2];
+				
+				if (relation == "Friends") {
+					for (Profile p : _reader.getAllProfiles()) {
+						if (p.getname().equals(name)) {
+							p._friendlist.add(_reader.searchProfile(name2));
+						}
 					}
 				}
 
@@ -315,5 +317,16 @@ public class Driver {
 			System.out.println(e.getMessage());
 		}
 		return friendlist;
+	}
+	
+	
+	public static void main(String[] args) throws Exception {
+		DataReader dr = new DataReader();
+		Driver driver = new Driver(dr);
+		dr.loadAdults();
+		dr.loadChildren();
+		dr.loadKids();
+		dr.SetColleagues();
+		System.out.println(dr.searchAdultProfile("Gomer Simpson").getSpouse());
 	}
 }

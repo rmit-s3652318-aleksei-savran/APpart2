@@ -1,9 +1,26 @@
 #This is a text file for relations.
 #Lines started with # are comments and should be ignored.
 #The structure of the file:
-#Name	Surname	Name	Surname	Relation
+#Name Surname|Name Surname|Relation
 Aragorn Estel|Arwen Undomiel|Couple
 Frodo Beggins|Gendalf Mithrandir|Friends
 Aragorn Estel|Frodo Beggins|Friends
 Aragorn Estel|Gendalf Mithrandir|Friends
-Frodo Beggins|Galadriel Nerwen|Colleges	
+Frodo Beggins|Galadriel Nerwen|Colleagues
+Gomer Simpson|Marge Simpson|Couple
+Gomer Simpson|Bart Simpson|Dad
+Marge Simpson|Bart Simpson|Mom
+Kirk Van Houten|Milhouse Van Damme Houton|Dad
+Luann Van Houten|Milhouse Van Damme Houton|Mom
+Kirk Van Houten|Luann Van Houten|Couple
+Gomer Simpson|Lisa Simpson|Dad
+Marge Simpson|Lisa Simpson|Mom
+Gomer Simpson|Maggy Simpson|Dad
+Marge Simpson|Maggy Simpson|Mom
+Bart Simpson|Milhouse Van Damme Houton|Classmates
+Bart Simpson|Lisa Simpson|Classmates
+Milhouse Van Damme Houton|Lisa Simpson|Classmates
+Gomer Simpson|Charlse Bearns|Colleagues
+Marge Simpson|Luann Van Houten|Friends
+Gomer Simpson|Kirk Van Houten||Friends
+Han Solo|Aragorn Estel|Colleagues
