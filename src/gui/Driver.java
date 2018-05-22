@@ -19,9 +19,9 @@ public class Driver {
 
 	private Set<Profile> _profiles = new HashSet<>();
 	DataReader _reader;
-	ArrayList<Profile> _adults;
-	ArrayList<Profile> _children;
-	ArrayList<Profile> _kids;
+	ArrayList<Adult> _adults;
+	ArrayList<Child> _children;
+	ArrayList<YoungChild> _kids;
 	ArrayList<Profile> _allProfiles;
 	private BufferedReader breader;
 
@@ -33,9 +33,14 @@ public class Driver {
 		try {
 			this._reader = _reader;
 			_adults = _reader.loadAdults();
-			//_children = _reader.loadChildren();
-			//_kids = _reader.loadKids();
-
+			_reader.SetSpouses();
+			_children = _reader.loadChildren();
+			_kids = _reader.loadKids();
+			_reader.SetColleagues();
+			_reader.SetChildren();
+			_reader.SetClassmates();
+			
+			
 			_allProfiles = _reader.loadAllProfiles();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -211,27 +216,27 @@ public class Driver {
 		this._reader = _reader;
 	}
 
-	public ArrayList<Profile> get_adults() {
+	public ArrayList<Adult> get_adults() {
 		return _adults;
 	}
 
-	public void set_adults(ArrayList<Profile> _adults) {
+	public void set_adults(ArrayList<Adult> _adults) {
 		this._adults = _adults;
 	}
 
-	public ArrayList<Profile> get_children() {
+	public ArrayList<Child> get_children() {
 		return _children;
 	}
 
-	public void set_children(ArrayList<Profile> _children) {
+	public void set_children(ArrayList<Child> _children) {
 		this._children = _children;
 	}
 
-	public ArrayList<Profile> get_kids() {
+	public ArrayList<YoungChild> get_kids() {
 		return _kids;
 	}
 
-	public void set_kids(ArrayList<Profile> _kids) {
+	public void set_kids(ArrayList<YoungChild> _kids) {
 		this._kids = _kids;
 	}
 
@@ -251,27 +256,27 @@ public class Driver {
 		this._reader = reader;
 	}
 
-	public ArrayList<Profile> getAdults() {
+	public ArrayList<Adult> getAdults() {
 		return _adults;
 	}
 
-	public void setAdults(ArrayList<Profile> adults) {
+	public void setAdults(ArrayList<Adult> adults) {
 		this._adults = adults;
 	}
 
-	public ArrayList<Profile> getChildren() {
+	public ArrayList<Child> getChildren() {
 		return _children;
 	}
 
-	public void setChildren(ArrayList<Profile> children) {
+	public void setChildren(ArrayList<Child> children) {
 		this._children = children;
 	}
 
-	public ArrayList<Profile> getKids() {
+	public ArrayList<YoungChild> getKids() {
 		return _kids;
 	}
 
-	public void setKids(ArrayList<Profile> kids) {
+	public void setKids(ArrayList<YoungChild> kids) {
 		this._kids = kids;
 	}
 
@@ -301,7 +306,7 @@ public class Driver {
 				String relation = tokens[2];
 				
 				if (relation == "Friends") {
-					for (Profile p : _reader.getAllProfiles()) {
+					for (Profile p : _reader.loadAllProfiles()) {
 						if (p.getname().equals(name)) {
 							p._friendlist.add(_reader.searchProfile(name2));
 						}
@@ -324,9 +329,14 @@ public class Driver {
 		DataReader dr = new DataReader();
 		Driver driver = new Driver(dr);
 		dr.loadAdults();
-		//dr.loadChildren();
-		//dr.loadKids();
+		dr.SetSpouses();
 		dr.SetColleagues();
-		System.out.println(dr.searchAdultProfile("Gomer Simpson").getSpouse());
+		dr.SetChildren();
+		dr.loadChildren();
+		dr.loadKids();
+		dr.loadAllProfiles();
+		
+		
+		System.out.println(driver.searchProfile("Gomer Simpson"));
 	}
 }

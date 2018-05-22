@@ -62,8 +62,8 @@ public class Gui extends Application {
 		root.add(searchText, 9, 1, 4, 2);
 		root.add(btnSearch, 13, 1, 2, 2);
 
-		//_names.addAll(_driver.listProfiles());
-		_names.addAll(ShowAllUsers.userShowAll());
+		_names.addAll(_driver.listProfiles());
+		//_names.addAll(ShowAllUsers.userShowAll());
 		ListView<Profile> lstNames = new ListView<>(_names);
 		lstNames.setOrientation(Orientation.VERTICAL);
 		lstNames.setPrefSize(300, 200);
@@ -217,6 +217,8 @@ public class Gui extends Application {
 
 	private void setDisplayButtonAction(Stage primaryStage) {
 		_btnDisplay.setOnAction(new EventHandler<ActionEvent>() {
+			private ImageView imv;
+
 			@Override
 			public void handle(ActionEvent event) {
 				final Stage DisplayStage = new Stage();
@@ -232,9 +234,27 @@ public class Gui extends Application {
 				Label ageText = new Label(_selectedProfile.getage() + "");
 				Label statusLabel = new Label("Status:");
 				Label statusText = new Label(_selectedProfile.getstatus());
+				try {
+					SearchQueries.userSearchImage(_selectedProfile.getname());
+					//imv = null;
+					Image image = new Image("Bilbo.jpg");
+					imv = new ImageView(image);
+					
+					//Image image = new Image("data/" + _selectedProfile.get_imagePath());
+					//Image image = new Image("data/Bilbo.jpg");
+					//Image imageNF = new Image("data/noimagefound.jpg");
+//					if (image != null) {
+//						imv.setImage(image);
+//					} 
+//					else {
+//						imv.setImage(imageNF);
+//					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				//Image image = new Image("data/" + _selectedProfile.get_imagePath());
-			    //ImageView iv = new ImageView(image);
+			    
 
 
 				ObservableList<Profile> listoffriends = FXCollections
@@ -257,7 +277,7 @@ public class Gui extends Application {
 				DisplayPopupGrid.add(statusLabel, 1, 5, 2, 2);
 				DisplayPopupGrid.add(statusText, 3, 5, 2, 2);
 				DisplayPopupGrid.add(_friendlist, 1, 8, 2, 2);
-				//DisplayPopupGrid.add(iv, 1, 11, 2, 2);
+				DisplayPopupGrid.add(imv, 1, 11, 2, 2);
 
 				Scene DisplayScene = new Scene(DisplayPopupGrid, 600, 400);
 				DisplayStage.setScene(DisplayScene);

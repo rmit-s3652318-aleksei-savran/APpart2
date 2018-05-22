@@ -25,6 +25,14 @@ public class Adult extends Profile {
 
 	protected Set<Child> _dependents = new HashSet<>();
 
+	public Set<Child> get_dependents() {
+		return _dependents;
+	}
+
+	public void set_dependents(Set<Child> _dependents) {
+		this._dependents = _dependents;
+	}
+
 	public Boolean addfriend(Profile profile, Boolean isRelative) throws Exception {
 		if (isRelative || !(profile instanceof Child)) {
 			System.out.println("Adding friend " + profile.getname());
