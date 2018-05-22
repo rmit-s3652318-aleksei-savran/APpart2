@@ -43,8 +43,6 @@ public static ArrayList<Adult> userShowAll() throws ClassNotFoundException {
 		}
 		return adultsSQL;
 	}
-public static void main(String[] args) throws ClassNotFoundException {
-	userShowAll();
-}
+
 
 }

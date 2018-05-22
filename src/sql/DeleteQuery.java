@@ -38,9 +38,6 @@ public static void userDelete(String name) {
 			}
 		}
 	}
-public static void main(String[] args) {
-	String name = "Aleksei Savran";
-	userDelete(name);
-}
+
 
 }

@@ -43,14 +43,5 @@ public class UpdateQuery {
 	}
 	
 	
-	
-	public static void main(String[] args) throws ClassNotFoundException {
-		String name = "Gollum";
-		String surname = "Smeagol";
-		String status = "Looking for my precious";
-		String sex = "M";
-		Integer age = 500;
-		String state = "Shire";
-		updateProfile(name, surname, status, sex, age, state);
-	}
+
 }

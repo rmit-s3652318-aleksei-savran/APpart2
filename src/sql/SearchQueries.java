@@ -136,35 +136,6 @@ public static Profile userSearchImage(String name) throws Exception {
 	return pr;
 }
 
-public static int getUserID(String name) throws ClassNotFoundException {
-	Class.forName("org.sqlite.JDBC");
-	String url = "jdbc:sqlite:MiniDB.db";
-	Connection con = null;
-	int usID = 0;
-	try {
-		
-		con = DriverManager.getConnection(url);
-		String getId = "select id from Profiles where name = ?";
-		PreparedStatement pstmID = con.prepareStatement(getId);
-		pstmID.setString(1, name);
-		ResultSet rs = pstmID.executeQuery();
-		con.commit();
-		while (rs.next()) {
-			usID = rs.getInt("id");
-		}		
-	} catch (SQLException e) {
-		System.out.println(e.getMessage()); 
-	} finally {
-		if (con != null) {
-			try {
-				con.close();
-			} catch (SQLException e2) {			
-				System.out.println(e2.getMessage()); 
-			}
-		}
-	}
-	return usID;
-}
 	
 	public static ArrayList<String> getUserFriends(String name) throws ClassNotFoundException {
 		Class.forName("org.sqlite.JDBC");
@@ -370,10 +341,5 @@ public static int getUserID(String name) throws ClassNotFoundException {
 		return pr;
 	}
 	
-	
-public static void main(String[] args) throws Exception {
-	String name = "Bart Simpson";
-	System.out.println(dadSearch(name).getname());
-}
 
 }

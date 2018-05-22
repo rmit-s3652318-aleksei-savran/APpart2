@@ -77,33 +77,7 @@ public class CreateQueries {
 		}
 	}
 	
-//	public static void addColleagues(String name, String name2) throws ClassNotFoundException {
-//		Class.forName("org.sqlite.JDBC");
-//		String url = "jdbc:sqlite:MiniDB.db";
-//		Connection con = null;
-//		try {
-//			con = DriverManager.getConnection(url);
-//			String sql = "update relations set id = ?, colleagues = ?;";
-//			PreparedStatement pstmn = con.prepareStatement(sql);
-//			int prID = SearchQueries.getUserID(name);
-//			
-//			pstmn.setInt(1, prID);
-//			pstmn.setString(2, name2);			
-//			pstmn.execute();
-//			con.commit();
-//			
-//		} catch (SQLException e) {
-//			System.out.println(e.getMessage()); 
-//		} finally {
-//			if (con != null) {
-//				try {
-//					con.close();
-//				} catch (SQLException e2) {			
-//					System.out.println(e2.getMessage()); 
-//				}
-//			}
-//		}
-//	}
+
 	
 	private static byte[] readFile(String file) {
 		ByteArrayOutputStream baos = null;
@@ -125,11 +99,5 @@ public class CreateQueries {
 		return baos !=null ? baos.toByteArray() : null;
 	}
 	
-	public static void main(String[] args) throws ClassNotFoundException {
-		createNewUser("Savran Aleksei", "Student", "M", 23, "CBD");
-		
-	}
 	
-	
-
 }

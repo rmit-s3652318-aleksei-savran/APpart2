@@ -9,17 +9,12 @@ import java.util.ArrayList;
 public class DataReader {
 
 	private BufferedReader breader;
-	private BufferedReader bufreader;
 	private ArrayList<Profile> profiles;
 
 	public void setBreader(BufferedReader breader) {
 		this.breader = breader;
 	}
 	
-	public void setBufReaedr(BufferedReader bufreader) {
-		this.bufreader = bufreader;
-	}
-
 	public ArrayList<Adult> loadAdults() throws Exception {
 		SetSpouses();
 		try {
