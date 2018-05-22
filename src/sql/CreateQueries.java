@@ -50,7 +50,7 @@ public class CreateQueries {
 		}
 	}
 	
-	public static void addFriend(String name, String name2, String relation) throws ClassNotFoundException {
+	public static void addFriend(String name, String name2, String relation) throws ClassNotFoundException { //need to state the possible relations: Mom, Dad, Colleague, Friend, Classmate
 		Class.forName("org.sqlite.JDBC");
 		String url = "jdbc:sqlite:MiniDB.db";
 		Connection con = null;

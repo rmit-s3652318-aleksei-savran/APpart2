@@ -237,10 +237,10 @@ public class Gui extends Application {
 				try {
 					SearchQueries.userSearchImage(_selectedProfile.getname());
 					//imv = null;
-					Image image = new Image("Bilbo.jpg");
-					imv = new ImageView(image);
+					//Image image = new Image("Bilbo.jpg");
+					//imv = new ImageView(image);
 					
-					//Image image = new Image("data/" + _selectedProfile.get_imagePath());
+					Image image = new Image("data/" + _selectedProfile.get_imagePath());
 					//Image image = new Image("data/Bilbo.jpg");
 					//Image imageNF = new Image("data/noimagefound.jpg");
 //					if (image != null) {
@@ -277,7 +277,7 @@ public class Gui extends Application {
 				DisplayPopupGrid.add(statusLabel, 1, 5, 2, 2);
 				DisplayPopupGrid.add(statusText, 3, 5, 2, 2);
 				DisplayPopupGrid.add(_friendlist, 1, 8, 2, 2);
-				DisplayPopupGrid.add(imv, 1, 11, 2, 2);
+				//DisplayPopupGrid.add(imv, 1, 11, 2, 2);
 
 				Scene DisplayScene = new Scene(DisplayPopupGrid, 600, 400);
 				DisplayStage.setScene(DisplayScene);
